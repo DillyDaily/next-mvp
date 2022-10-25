@@ -39,10 +39,24 @@ export async function getStaticProps() {
     }
   `)
   
+//ways to deal with no data: 
+  // if (!categories) {
+  //   return {
+  //     redirect: {
+  //       destination: '/'
+  //     }
+  //   }
+  // }
+
+  // if (categories.length === 0) {
+  //   return { notFound: true };
+  // }
+
   return { 
     props:{
       categories: categories,
     }, 
+    revalidate: 10
   };
 };
 
