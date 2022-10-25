@@ -9,7 +9,7 @@ const CategoryList = (props) => {
                     <CategoryItem 
                     key={category.id}
                     name={category.name}
-                    imgUrl={category.images[0].url}
+                    imgUrl={category.categoryImage.url}
                     slug={category.slug}
                     />
                     ))}
