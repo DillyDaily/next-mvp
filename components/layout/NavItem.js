@@ -3,11 +3,12 @@ import { Link, ListItem } from '@chakra-ui/react';
 
 const NavItem = (props) => {
     const { title, slug } = props;
-    const navLink= `/${slug}`
+    // const navLink= `/${slug}`
 
     return(
         <ListItem p='3'>
-            <Link href={navLink} alt={title}> {title} </Link>
+            <h2>NAVITEM Temp Fix</h2>
+            {/* <Link href={navLink} alt={title}> {title} </Link> */}
         </ListItem>
     );
 };

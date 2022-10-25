@@ -1,9 +1,9 @@
-import { CATEGORIES } from './dummy-data';
+// import { CATEGORIES } from '../data/dummy-data';
 
-export function getAllCategories() {
-    return CATEGORIES;
-};
+// export function getAllCategories() {
+//     return categories;
+// };
 
-export function getCategoryById(id) {
-    return CATEGORIES.find((category) => category.id === id);
-};
+// export function getCategoryById(id) {
+//     return categories.find((category) => category.id === id);
+// };
