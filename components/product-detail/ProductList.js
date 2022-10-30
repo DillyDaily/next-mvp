@@ -3,7 +3,6 @@ import ProductItem from "./ProductItem";
 
 const ProductList = (props) => {
     const { products } = props;
-    // console.log("PROD LISTTT Props: ", props)
 
     return(
             <SimpleGrid columns={[1, null, 3]} spacing='10px'>

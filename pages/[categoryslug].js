@@ -1,57 +1,58 @@
 import { GraphQLClient } from 'graphql-request';
-import { Fragment } from 'react';
+import ProductList from '../components/product-detail/ProductList';
 
 const CategoryPage = (props) => {
-    const { loadedCategory } = props;
-    
-    return(
-        <Fragment>
-            <h2>{loadedCategory.name}</h2>
-
-        </Fragment>
-    );
+    const { loadedProducts } = props;
+    return <ProductList products={loadedProducts}/>;
 };
-
-const hygraph = new GraphQLClient(
-    'https://api-us-west-2.hygraph.com/v2/cl7pa961y455z01ukbiwy5qf2/master'
-);
 
 export async function getStaticProps(context) {
+    const hygraph = new GraphQLClient(
+        'https://api-us-west-2.hygraph.com/v2/cl7pa961y455z01ukbiwy5qf2/master'
+    );
     const { params } = context;
-
+    
     const categorySlug = params.categoryslug;
-
+    
     const data = await hygraph.request(`
-    {
-      categories {
-        id
-        name
-        slug
-        categoryImage {
-          fileName
-          url
+      {
+        products {
+          id
+          name
+          description
+          price
+          images {
+            fileName
+            url
+          }
+          categories {
+            slug
+          }
         }
       }
-    }
-  `)
-
-  const category = data.categories.find(category => category.slug === categorySlug);
-
-  return {
-    props: {
-        loadedCategory: category
-    }
-  }
-};
-
-export async function getStaticPaths() {
-    const { categories } = await hygraph.request(`
-    {
-      categories {
-        slug
+    `)
+    
+    const products = data.products.filter(product => product.categories[0].slug === categorySlug.toLowerCase());
+    
+    return {
+      props: {
+        loadedProducts: products
       }
     }
-  `)
+  };
+  
+  export async function getStaticPaths() {
+    const hygraph = new GraphQLClient(
+        'https://api-us-west-2.hygraph.com/v2/cl7pa961y455z01ukbiwy5qf2/master'
+    );
+
+    const { categories } = await hygraph.request(`
+      {
+        categories {
+          slug
+        }
+      }
+    `)
 
    return {
     paths: categories.map(({ slug }) => ({

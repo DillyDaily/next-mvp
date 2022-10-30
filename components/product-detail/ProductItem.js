@@ -4,7 +4,6 @@ import { usdPrice } from  '../../helpers/price-format';
 
 const ProductItem = (props) => {
     const { name, description, price, imgUrl, slug } = props;
-    // console.log("PRODUCT ITEM PROPS, ", props)
 
     return(
         <LinkBox className={classes.container} 
@@ -13,7 +12,7 @@ const ProductItem = (props) => {
             borderColor='#000'
             borderWidth='1px'
         >
-            <Image height='250px' src={imgUrl} alt={name}/>
+            <Image src={imgUrl} alt={name}/>
             <LinkOverlay href={slug}>
                 <Box p='4'
                     height='100%'

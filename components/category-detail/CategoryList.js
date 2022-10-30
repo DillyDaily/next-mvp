@@ -2,6 +2,7 @@ import { SimpleGrid } from "@chakra-ui/react";
 import CategoryItem from "./CategoryItem";
 
 const CategoryList = (props) => {
+
     const { categories } = props;
     return(
         <SimpleGrid columns={[1, null, 3]} spacing='10px'>

@@ -1,14 +1,19 @@
 import '../styles/globals.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import Layout from '../components/layout/Layout';
+import CartContext from './store/cart-context';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ChakraProvider>
+      <CartContext.Provider value={{
+        cartItems: false,
+      }}>
+        <ChakraProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ChakraProvider>
+      </CartContext.Provider>
   );
 };
 

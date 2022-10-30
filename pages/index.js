@@ -1,5 +1,6 @@
 // import fs from 'fs/promises';
 // import path from 'path';
+import { setState } from 'react';
 import { GraphQLClient } from 'graphql-request';
 
 import CategoryList from "../components/category-detail/CategoryList";
@@ -15,15 +16,11 @@ const Home = (props) => {
   );
 }
 
-const hygraph = new GraphQLClient(
-  'https://api-us-west-2.hygraph.com/v2/cl7pa961y455z01ukbiwy5qf2/master'
-);
 
 export async function getStaticProps() { 
-  // const allCategories = getAllCategories();
-  // const filePath = path.join(process.cwd(), 'data', 'dummy-data.json');
-  // const jsonData = await fs.readFile(filePath);
-  // const data = JSON.parse(jsonData);
+  const hygraph = new GraphQLClient(
+    'https://api-us-west-2.hygraph.com/v2/cl7pa961y455z01ukbiwy5qf2/master'
+  );
 
   const { categories } = await hygraph.request(`
     {
@@ -38,25 +35,12 @@ export async function getStaticProps() {
       }
     }
   `)
-  
-//ways to deal with no data: 
-  // if (!categories) {
-  //   return {
-  //     redirect: {
-  //       destination: '/'
-  //     }
-  //   }
-  // }
-
-  // if (categories.length === 0) {
-  //   return { notFound: true };
-  // }
 
   return { 
     props:{
       categories: categories,
     }, 
-    revalidate: 10
+    revalidate: 120
   };
 };
 

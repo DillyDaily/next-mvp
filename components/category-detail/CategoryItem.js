@@ -13,7 +13,7 @@ const CategoryItem = (props) => {
                 borderColor='#000'
                 borderWidth='1px'
             >
-                <Image height='250px' src={imgUrl} alt={name}/>
+                <Image src={imgUrl} alt={name}/>
                 <LinkOverlay href={slug}>
                     <Box py='4'>
                         <Box className={classes.quickshop}
@@ -37,7 +37,7 @@ const CategoryItem = (props) => {
                             borderColor: '#bec3c9',
                         }}
                         > 
-                            shop {name} 
+                            shop {name.toLowerCase()} 
                         </Box>
                     </Box>
                 </LinkOverlay>
