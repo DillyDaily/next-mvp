@@ -1,12 +1,12 @@
 import { GraphQLClient } from "graphql-request";
-import ProductItem from "../../../components/product-detail/ProductItem";
+import CartItem from "../../../components/cart-detail/CartItem";
 
 const ProductHome = (props) => {
   
   const { singleProduct } = props;
   console.log("SINGLE LADIES: ", props)
   return (
-    <ProductItem  
+    <CartItem  
       key={singleProduct[0].id}
       name={singleProduct[0].name}
       description={singleProduct[0].description}
