@@ -1,21 +1,11 @@
-// import fs from 'fs/promises';
-// import path from 'path';
-import { setState } from 'react';
+// import { setState } from 'react';
 import { GraphQLClient } from 'graphql-request';
 
 import CategoryList from "../components/category-detail/CategoryList";
-// import { getAllCategories } from "../helpers/category-helpers";
 
 const Home = (props) => {
-  console.log("ASYNC CALL: ", props)
-  return (
-    <div>
-        <h1>Home Index Page</h1>
-        <CategoryList categories={props.categories} />
-      </div>
-  );
+  return <CategoryList categories={props.categories} />
 }
-
 
 export async function getStaticProps() { 
   const hygraph = new GraphQLClient(

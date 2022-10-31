@@ -1,9 +1,13 @@
+import { useRouter } from 'next/router';
 import { LinkBox, Box, LinkOverlay, Image } from '@chakra-ui/react';
 import classes from './ProductItem.module.css';
 import { usdPrice } from  '../../helpers/price-format';
 
 const ProductItem = (props) => {
     const { name, description, price, imgUrl, slug } = props;
+    const router = useRouter();
+    console.log("PRODUCT ITEM PROPS", router.query);
+    const categoryRef = router.query.categoryslug;
 
     return(
         <LinkBox className={classes.container} 
@@ -13,7 +17,7 @@ const ProductItem = (props) => {
             borderWidth='1px'
         >
             <Image src={imgUrl} alt={name}/>
-            <LinkOverlay href={slug}>
+            <LinkOverlay href={`${categoryRef}/${slug}`}>
                 <Box p='4'
                     height='100%'
                 >

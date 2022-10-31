@@ -1,5 +1,5 @@
 import { GraphQLClient } from 'graphql-request';
-import ProductList from '../components/product-detail/ProductList';
+import ProductList from '../../components/product-detail/ProductList';
 
 const CategoryPage = (props) => {
     const { loadedProducts } = props;
@@ -21,6 +21,7 @@ export async function getStaticProps(context) {
           name
           description
           price
+          slug
           images {
             fileName
             url
