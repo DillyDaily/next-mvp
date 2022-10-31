@@ -6,7 +6,6 @@ import { usdPrice } from  '../../helpers/price-format';
 const ProductItem = (props) => {
     const { name, description, price, imgUrl, slug } = props;
     const router = useRouter();
-    console.log("PRODUCT ITEM PROPS", router.query);
     const categoryRef = router.query.categoryslug;
 
     return(
