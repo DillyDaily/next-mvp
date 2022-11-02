@@ -1,22 +1,22 @@
-import { Box } from '@chakra-ui/react';
+import { Radio, Stack } from '@chakra-ui/react';
 
 const ProductVariants = (props) => {
     const {variantProps} = props;
     
-    const uniqColorArr = variantProps.map(variant => {
-        return variant.color
+    const uniqSizeArr = variantProps.map(variant => {
+        return variant.size
     })
 
-    const uniqColors = [...new Set(uniqColorArr)];
+    const uniqSize = [...new Set(uniqSizeArr)];
 
     return(
-        <Box ml='2' color='gray.600' fontSize='sm'>
+        < Stack direction = 'row' >
            { 
-           uniqColors.map(i => {
-            return <div key={i.index}>{i}</div>
+           uniqSize.map(i => {
+            return <Radio key={i} value={i}>{i}</Radio>
            }) 
            }
-        </Box>
+        </Stack>
 )
 };
 

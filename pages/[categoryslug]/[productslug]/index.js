@@ -1,25 +1,21 @@
 import { GraphQLClient } from "graphql-request";
 import { Fragment } from "react";
 import { Box, Image, VStack } from '@chakra-ui/react';
+
 import ProductDetails from "../../../components/product-detail/ProductDetails";
+import ImageScroll from "../../../components/product-detail/ImageScroll";
+import AddToCartForm from "../../../components/cart-detail/AddToCartForm";
+
 
 const ProductHome = (props) => {
   
   const { singleProduct } = props;
 
-  const imgScroll = singleProduct[0].images.map(image => {
-    return (
-      <Box w='100px' h='100px' p='2' key={image.index}>
-        <Image key={image.id} src={image.url} alt={image.name} />
-    </Box>
-    )
-  })
-
   return (
     <Fragment>
       <Box display='flex'>
         <VStack spacing='24px' align='left'>
-        {imgScroll}
+          <ImageScroll imgUrl={singleProduct[0].images} />
         </VStack>
         <Box boxSize='md' my='4'>
           <Image src={singleProduct[0].images[0].url} alt={singleProduct[0].name}  height='100%' width='100%'/>
@@ -34,9 +30,14 @@ const ProductHome = (props) => {
           slug={singleProduct[0].slug}
           reviews={singleProduct[0].reviews}
           ratings={singleProduct[0].reviews[0].rating}
+        />
+        <AddToCartForm 
+          imgUrl={singleProduct[0].images} 
           variants={singleProduct[0].variants}
         />
       </Box>
+
+
     </Fragment>
   )
 };
@@ -59,9 +60,10 @@ export async function getStaticProps(context) {
         price
         slug
         images {
+          id
           fileName
           url
-          id
+          handle
         }
         reviews {
           rating

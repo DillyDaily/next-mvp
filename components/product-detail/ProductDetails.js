@@ -1,10 +1,9 @@
 import { Box } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons'
 import { usdPrice } from  '../../helpers/price-format';
-import ProductVariants from './ProductVariants';
 
 const ProductDetails = (props) => {
-const { name, description, price, reviews, ratings, variants } = props;
+const { name, description, price, reviews, ratings } = props;
 const reviewCount = reviews.length;
 
 return(
@@ -62,7 +61,6 @@ return(
                     {reviewCount} reviews
                 </Box>
             </Box>
-            <ProductVariants variantProps={variants} />
         </Box>
     )
 };
