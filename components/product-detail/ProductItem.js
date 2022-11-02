@@ -10,6 +10,7 @@ const ProductItem = (props) => {
 
     return(
         <LinkBox className={classes.container} 
+            as='li'
             maxW='sm' 
             overflow='hidden'
             borderColor='#000'

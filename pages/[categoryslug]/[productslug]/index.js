@@ -20,21 +20,22 @@ const ProductHome = (props) => {
         <Box boxSize='md' my='4'>
           <Image src={singleProduct[0].images[0].url} alt={singleProduct[0].name}  height='100%' width='100%'/>
         </Box>
-        
-        <ProductDetails  
-          key={singleProduct[0].id}
-          name={singleProduct[0].name}
-          description={singleProduct[0].description}
-          price={singleProduct[0].price}
-          imgUrl={singleProduct[0].images[0].url}
-          slug={singleProduct[0].slug}
-          reviews={singleProduct[0].reviews}
-          ratings={singleProduct[0].reviews[0].rating}
-        />
-        <AddToCartForm 
-          imgUrl={singleProduct[0].images} 
-          variants={singleProduct[0].variants}
-        />
+        <Box>
+          <ProductDetails  
+            key={singleProduct[0].id}
+            name={singleProduct[0].name}
+            description={singleProduct[0].description}
+            price={singleProduct[0].price}
+            imgUrl={singleProduct[0].images[0].url}
+            slug={singleProduct[0].slug}
+            reviews={singleProduct[0].reviews}
+            ratings={singleProduct[0].reviews[0].rating}
+          />
+          <AddToCartForm 
+            imgUrl={singleProduct[0].images} 
+            variants={singleProduct[0].variants}
+          />
+        </Box>
       </Box>
 
 

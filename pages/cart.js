@@ -1,7 +1,10 @@
+import CartList from "../components/cart-detail/CartList";
+
+
 
 const Cart = () => {
     return (
-        <div>THIS IS THE BASKET PAGE</div>
+        <CartList />
     )
 };
 

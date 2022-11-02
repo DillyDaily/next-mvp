@@ -5,7 +5,7 @@ const CategoryList = (props) => {
 
     const { categories } = props;
     return(
-        <SimpleGrid columns={[1, null, 3]} spacing='10px'>
+        <SimpleGrid as='ul' list-style='none' columns={[1, null, 3]} spacing='10px'>
                 {categories.map((category) => (
                     <CategoryItem 
                     key={category.id}

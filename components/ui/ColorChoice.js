@@ -1,28 +1,44 @@
-import { Image } from '@chakra-ui/react'
-import { Fragment } from 'react';
+import { Image, HStack, useRadioGroup } from '@chakra-ui/react'
+
+import CustomRadioButton from './CustomRadioButton';
 
 const ColorChoice = (props) => {
 
     const { imgUrl } = props;
+    const options = imgUrl;
+
+    const { getRootProps, getRadioProps } = useRadioGroup({
+    name: 'framework',
+    defaultValue: 'react',
+    onChange: console.log,
+  })
+
+  const group = getRootProps()
 
     return(
-        <ul>
+        <HStack {...group}>
             {
-                imgUrl.map(image => {
+                options.map(value => {
+                    const radio = getRadioProps({ value })
                     return (
-                        <li key={image.handle}>
-                            <Image 
+                        <CustomRadioButton key={value} {...radio}>
+                            {<Image 
                                 borderRadius = 'full'
                                 boxSize = '25px'
-                                key={image.id}
-                                src={image.url}
-                                alt={image.name}
-                            />
-                        </li>
+                                key={value.id}
+                                src={value.url}
+                                alt={value.name}
+                                cursor = 'pointer'
+                                borderWidth = '1px'
+                                _focus={{
+                                boxShadow: 'outline',
+                                }}
+                            />}
+                        </CustomRadioButton>
                     )
                 })
             }
-        </ul>
+        </HStack>
     )
 };
 

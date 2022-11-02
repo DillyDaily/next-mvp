@@ -7,33 +7,7 @@ const { name, description, price, reviews, ratings } = props;
 const reviewCount = reviews.length;
 
 return(
-        <Box p='4'height='100%'>
-            
-            <Box
-                as="button"
-                height='44px'
-                width='100%'
-                lineHeight='1.2'
-                transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                fontSize='16px'
-                fontWeight='semibold'
-                bg='#fff'
-                borderTopColor='#000'
-                borderTopWidth='1px'
-                color = '#000'
-                _hover={{ 
-                    bg: '#000', 
-                    color: '#fff'
-                }}
-                _active={{
-                    bg: '#fff',
-                    transform: 'scale(0.98)',
-                    borderColor: '#bec3c9',
-                }}
-            > 
-                Add to Cart 
-            </Box>
-
+        <Box p='4'>
             <Box mt='1'
                 fontWeight='semibold'
                 as='h4'

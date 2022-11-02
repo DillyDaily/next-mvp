@@ -5,7 +5,7 @@ const ProductList = (props) => {
     const { products } = props;
 
     return(
-            <SimpleGrid columns={[1, null, 3]} spacing='10px'>
+            <SimpleGrid as='ul' list-style='none' columns={[1, null, 3]} spacing='10px'>
                 {products.map((product) => (
                     <ProductItem 
                     key={product.id}
