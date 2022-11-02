@@ -7,14 +7,17 @@ import ProductVariants from "../product-detail/ProductVariants";
 
 const AddToCartForm = (props) => {
 
-    const { imgUrl, variants } = props;
+    const { variants, colorVariants } = props;
+    console.log("YAAASSS : ", props)
+
+    // const extractColorUrl = colorVariants
 
     const [value, setValue] = useState('LARGE')
 
     return (
         <form>
             <Box p='4'>
-                <ColorChoice imgUrl={imgUrl} />
+                <ColorChoice imgUrl={colorVariants} />
                 
                 <RadioGroup onChange={setValue} value={value} p='4'>
                     <ProductVariants variantProps={variants}/>

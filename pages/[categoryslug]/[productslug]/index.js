@@ -10,6 +10,9 @@ import AddToCartForm from "../../../components/cart-detail/AddToCartForm";
 const ProductHome = (props) => {
   
   const { singleProduct } = props;
+  
+  const extractColorVariant = singleProduct[0].variants;
+  console.log("INDEX PROPPS: ", extractColorVariant)
 
   return (
     <Fragment>
@@ -34,6 +37,7 @@ const ProductHome = (props) => {
           <AddToCartForm 
             imgUrl={singleProduct[0].images} 
             variants={singleProduct[0].variants}
+            colorVariants={extractColorVariant}
           />
         </Box>
       </Box>
@@ -75,6 +79,11 @@ export async function getStaticProps(context) {
             name
             color
             size
+            colorPhoto {
+              id
+              fileName
+              url
+            }
           }
         }
       }

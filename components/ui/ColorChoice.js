@@ -6,6 +6,11 @@ const ColorChoice = (props) => {
 
     const { imgUrl } = props;
     const options = imgUrl;
+    const newOptions = imgUrl.map((i) => {
+        return i.colorPhoto
+    });
+
+    console.log("A MAP :", newOptions)
 
     const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'framework',
@@ -18,16 +23,17 @@ const ColorChoice = (props) => {
     return(
         <HStack {...group}>
             {
-                options.map(value => {
+                newOptions.map(value => {
+                    console.log("COLOR CHOICE VALUE :", value)
                     const radio = getRadioProps({ value })
                     return (
                         <CustomRadioButton key={value} {...radio}>
                             {<Image 
                                 borderRadius = 'full'
                                 boxSize = '25px'
-                                key={value.id}
-                                src={value.url}
-                                alt={value.name}
+                                key={value[0].id}
+                                src={value[0].url}
+                                alt={value[0].fileName}
                                 cursor = 'pointer'
                                 borderWidth = '1px'
                                 _focus={{
