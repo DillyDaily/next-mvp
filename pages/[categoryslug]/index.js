@@ -1,7 +1,7 @@
 import { GraphQLClient } from 'graphql-request';
 import ProductList from '../../components/product-detail/ProductList';
 
-const CategoryPage = (props) => {
+const CategoryHome = (props) => {
     const { loadedProducts } = props;
     return <ProductList products={loadedProducts}/>;
 };
@@ -63,4 +63,4 @@ export async function getStaticProps(context) {
    };
 };
 
-export default CategoryPage;
+export default CategoryHome;
