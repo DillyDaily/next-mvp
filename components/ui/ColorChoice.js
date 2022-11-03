@@ -5,12 +5,9 @@ import CustomRadioButton from './CustomRadioButton';
 const ColorChoice = (props) => {
 
     const { imgUrl } = props;
-    const options = imgUrl;
     const newOptions = imgUrl.map((i) => {
         return i.colorPhoto
     });
-
-    console.log("A MAP :", newOptions)
 
     const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'framework',
@@ -24,7 +21,6 @@ const ColorChoice = (props) => {
         <HStack {...group}>
             {
                 newOptions.map(value => {
-                    console.log("COLOR CHOICE VALUE :", value)
                     const radio = getRadioProps({ value })
                     return (
                         <CustomRadioButton key={value} {...radio}>

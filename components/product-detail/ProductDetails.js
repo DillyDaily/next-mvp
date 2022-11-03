@@ -1,12 +1,13 @@
 import { Box } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons'
 import { usdPrice } from  '../../helpers/price-format';
+import { avgRating } from '../../helpers/product-helpers';
 
 const ProductDetails = (props) => {
-const { name, description, price, reviews, ratings } = props;
-const reviewCount = reviews.length;
+    const { name, description, price, reviews, ratings } = props;
+    const reviewCount = reviews.length;
 
-return(
+    return(
         <Box p='4'>
             <Box mt='1'
                 fontWeight='semibold'
@@ -28,7 +29,7 @@ return(
                     .map((_, i) => (
                     <StarIcon
                         key={i}
-                        color={i < ratings ? 'teal.500' : 'gray.300'}
+                        color={i < avgRating(ratings, reviews) ? 'teal.500' : 'gray.300'}
                     />
                     ))}
                 <Box as='span' ml='2' color='gray.600' fontSize='sm'>

@@ -8,9 +8,6 @@ import ProductVariants from "../product-detail/ProductVariants";
 const AddToCartForm = (props) => {
 
     const { variants, colorVariants } = props;
-    console.log("YAAASSS : ", props)
-
-    // const extractColorUrl = colorVariants
 
     const [value, setValue] = useState('LARGE')
 
