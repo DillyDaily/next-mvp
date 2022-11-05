@@ -1,8 +1,10 @@
+import React from 'react';
+
 import { Image, HStack, useRadioGroup } from '@chakra-ui/react'
 
 import CustomRadioButton from './CustomRadioButton';
 
-const ColorChoice = (props) => {
+const ColorChoice = React.forwardRef((props, ref) => {
 
     const { imgUrl } = props;
     const newOptions = imgUrl.map((i) => {
@@ -10,20 +12,24 @@ const ColorChoice = (props) => {
     });
 
     const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'framework',
-    defaultValue: 'react',
-    onChange: console.log,
-  })
+        name: 'color options',
+        defaultValue: 'color at first index',
+        onChange: console.log("color change: "),
+    })
 
-  const group = getRootProps()
+    const group = getRootProps()
 
     return(
         <HStack {...group}>
             {
-                newOptions.map(value => {
+                newOptions.map((value, index) => {
                     const radio = getRadioProps({ value })
                     return (
-                        <CustomRadioButton key={value} {...radio}>
+                        <CustomRadioButton as="input"
+                            ref={ref}
+                            key={index} 
+                            {...radio}
+                        >
                             {<Image 
                                 borderRadius = 'full'
                                 boxSize = '25px'
@@ -42,6 +48,6 @@ const ColorChoice = (props) => {
             }
         </HStack>
     )
-};
+});
 
 export default ColorChoice;

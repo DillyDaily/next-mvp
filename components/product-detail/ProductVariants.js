@@ -1,3 +1,4 @@
+
 import { Radio, Stack } from '@chakra-ui/react';
 
 const ProductVariants = (props) => {
@@ -10,7 +11,7 @@ const ProductVariants = (props) => {
     const uniqSize = [...new Set(uniqSizeArr)];
 
     return(
-        < Stack direction = 'row' >
+        < Stack direction='row'>
            { 
            uniqSize.map(i => {
             return <Radio key={i} value={i}>{i}</Radio>

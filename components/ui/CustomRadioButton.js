@@ -1,6 +1,8 @@
+import React from 'react';
+
 import { Box, useRadio } from '@chakra-ui/react'
 
-function CustomRadioButton (props) {
+const CustomRadioButton = React.forwardRef((props, ref) => {
   const { getInputProps, getCheckboxProps } = useRadio(props)
 
   const input = getInputProps()
@@ -8,7 +10,7 @@ function CustomRadioButton (props) {
 
   return (
     <Box as='label'>
-      <input {...input} />
+      <input ref={ref} {...input} />
       <Box
         {...checkbox}
         cursor='pointer'
@@ -28,6 +30,6 @@ function CustomRadioButton (props) {
       </Box>
     </Box>
   )
-};
+});
 
 export default CustomRadioButton;

@@ -4,7 +4,7 @@ const CartContext = React.createContext({
     // cartItems: false
     items: [],
     totalAmount: 0,
-    addItem: (itme) => {},
+    addItem: (item) => {},
     removeItem: (id) => {}
 });
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import { RadioGroup, Box } from '@chakra-ui/react';
 
@@ -6,20 +6,39 @@ import ColorChoice from "../ui/ColorChoice";
 import ProductVariants from "../product-detail/ProductVariants";
 
 const AddToCartForm = (props) => {
+    const colorInputRef = useRef();
+    const sizeInputRef = useRef()
+    
+    const submitHandler = event => {
+        event.preventDefault();
+        // const enteredColor = colorInputRef.current.value;
+        const enteredSize = sizeInputRef.current.value;
+        console.log("CLICKED ADD TO CART", sizeInputRef.current.value)
+    };
 
     const { variants, colorVariants } = props;
 
-    const [value, setValue] = useState('LARGE')
+    // const [value, setValue] = useState('LARGE')
 
     return (
-        <form>
-            <Box p='4'>
-                <ColorChoice imgUrl={colorVariants} />
+            <Box 
+                as="form" 
+                p='4' 
+                onSubmit={submitHandler}>
                 
-                <RadioGroup onChange={setValue} value={value} p='4'>
+                <ColorChoice 
+                    ref={colorInputRef}
+                    imgUrl={colorVariants} />
+
+                <RadioGroup 
+                    ref={sizeInputRef}
+                    p='4'
+                    // onChange={setValue} 
+                    // value={value} 
+                >
                     <ProductVariants variantProps={variants}/>
                 </RadioGroup>
-
+                
                 <Box
                     as="button"
                     height='44px'
@@ -45,7 +64,6 @@ const AddToCartForm = (props) => {
                     Add to Cart 
                 </Box>
             </Box>
-        </form>
     )
 };
 

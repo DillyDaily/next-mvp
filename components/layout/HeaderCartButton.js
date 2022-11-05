@@ -5,8 +5,9 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import CartContext from '../../pages/store/cart-context';
 
 
-const HeaderCartButton = (props) => {
+const HeaderCartButton = () => {
     const CartCtx = useContext(CartContext);
+
     const numberOfCartItems = CartCtx.items.reduce((curNum, item) => {
         return curNum + item.amount;
     }, 0);

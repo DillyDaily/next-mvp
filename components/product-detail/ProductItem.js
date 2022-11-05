@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { LinkBox, Box, LinkOverlay, Image } from '@chakra-ui/react';
 import classes from './ProductItem.module.css';
 import { usdPrice } from  '../../helpers/price-format';
+// import Button from '../ui/Button';
 
 const ProductItem = (props) => {
     const { name, description, price, imgUrl, slug } = props;
@@ -60,6 +61,10 @@ const ProductItem = (props) => {
                     > 
                         Quickshop 
                     </Box>
+                    {/* <Button 
+                        // className={classes.quickshop}
+                        btn={'Quickshop'}
+                    /> */}
                 </Box>
             </LinkOverlay>
         </LinkBox>

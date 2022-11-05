@@ -5,6 +5,7 @@ import { Box, Image, VStack } from '@chakra-ui/react';
 import ProductDetails from "../../../components/product-detail/ProductDetails";
 import ImageScroll from "../../../components/product-detail/ImageScroll";
 import AddToCartForm from "../../../components/cart-detail/AddToCartForm";
+import SimpleInput from "../../../components/cart-detail/SimpleInput";
 
 
 const ProductHome = (props) => {
@@ -25,11 +26,12 @@ const ProductHome = (props) => {
         <VStack spacing='24px' align='left'>
           <ImageScroll imgUrl={extractIndex.images} />
         </VStack>
-        <Box boxSize='md' my='4'>
+        <Box boxSize='md' my='2'>
           <Image src={imgData[0]} alt={extractIndex.name}  height='100%' width='100%'/>
         </Box>
         <Box>
-          <ProductDetails  
+          {/* //TODO: CLEAN UP if not using PRod details */}
+          {/* <ProductDetails  
             key={extractIndex.id}
             name={extractIndex.name}
             description={extractIndex.description}
@@ -38,8 +40,20 @@ const ProductHome = (props) => {
             slug={extractIndex.slug}
             reviews={extractIndex.reviews}
             ratings={ratingData}
-          />
-          <AddToCartForm 
+            /> */}
+          {/* <AddToCartForm 
+            imgUrl={extractIndex.images} 
+            variants={extractIndex.variants}
+            colorVariants={extractIndex.variants}
+          /> */}
+          <SimpleInput 
+            key={extractIndex.id}
+            name={extractIndex.name}
+            description={extractIndex.description}
+            price={extractIndex.price}
+            slug={extractIndex.slug}
+            reviews={extractIndex.reviews}
+            ratings={ratingData}
             imgUrl={extractIndex.images} 
             variants={extractIndex.variants}
             colorVariants={extractIndex.variants}
@@ -88,6 +102,7 @@ export async function getStaticProps(context) {
               id
               fileName
               url
+              handle
             }
           }
         }
