@@ -5,16 +5,10 @@ import { usdPrice } from  '../../helpers/price-format';
 import ProductRating from '../product-detail/ProductRating';
 import ColorChoice from '../ui/ColorChoice';
 import Button from '../ui/Button';
+import ProductSizeVariants from '../product-detail/ProductSizeVariants';
 
 const SimpleInput = (props) => {
     const { name, description, price, reviews, ratings, variants, colorVariants } = props;
-    
-    const uniqSizeArr = variants.map(variant => {
-        return variant.size
-    })
-
-    const uniqSize = [...new Set(uniqSizeArr)];
-    
 
     const [enteredSize, setEnteredSize, enteredColor, setEnteredColor] = useState('');
 
@@ -30,7 +24,7 @@ const SimpleInput = (props) => {
 
     const colorInputChangeHandler = (id) => {
         // setEnteredColor(event.target.value);
-        console.log('CLICKED', id)
+        // console.log('CLICKED', id)
     };
 
 
@@ -59,23 +53,10 @@ const SimpleInput = (props) => {
 
             <Box as='form' 
                 onSubmit={formSubmissionHandler}>
-                <RadioGroup 
-                    p='4'
-                    > 
-                    <Stack direction='row'>
-                        { uniqSize.length > 0 && uniqSize.map((i) => (
-                            <Radio 
-                                onChange={sizeInputChangeHandler}
-                                key={i} 
-                                value={i}
-                                >
-                                {i}
-                            </Radio>
-                        ))};
-                </Stack>
-                    {/* <ProductVariants variantProps={variants}/> */} 
-                </RadioGroup>
-
+                <ProductSizeVariants 
+                    sizeVariantProps={variants}
+                    onHandleSize={sizeInputChangeHandler}
+                /> 
                 <ColorChoice 
                     imgUrl={colorVariants} 
                     onSetColor={colorInputChangeHandler}

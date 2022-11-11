@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { RadioGroup, Box } from '@chakra-ui/react';
 
 import ColorChoice from "../ui/ColorChoice";
-import ProductVariants from "../product-detail/ProductVariants";
+import ProductSizeVariants from "../product-detail/ProductSizeVariants";
 
 const AddToCartForm = (props) => {
     const colorInputRef = useRef();
@@ -36,7 +36,7 @@ const AddToCartForm = (props) => {
                     // onChange={setValue} 
                     // value={value} 
                 >
-                    <ProductVariants variantProps={variants}/>
+                    <ProductSizeVariants variantProps={variants}/>
                 </RadioGroup>
                 
                 <Box

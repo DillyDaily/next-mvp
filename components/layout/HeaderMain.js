@@ -28,16 +28,14 @@ const HeaderMain = () => {
         }
     ];
 
-    const [categories, setData] = useState(categoryData);
+    const [categories] = useState(categoryData);
 
     return (
-        <Container >
-            <Flex>
+        <Flex minWidth='max-content' alignItems='center' gap='2' p='4'>
             <NavMain navItems={categories} />
             <Spacer />
             <HeaderCartButton />
-            </Flex>
-        </Container>
+        </Flex>
     )
 }
 export default HeaderMain;
