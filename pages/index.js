@@ -1,4 +1,3 @@
-// import { setState } from 'react';
 import { GraphQLClient } from 'graphql-request';
 
 import CategoryList from "../components/category-detail/CategoryList";

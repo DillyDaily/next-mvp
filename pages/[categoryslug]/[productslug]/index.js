@@ -60,8 +60,6 @@ const ProductHome = (props) => {
           />
         </Box>
       </Box>
-
-
     </Fragment>
   )
 };

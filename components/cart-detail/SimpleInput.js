@@ -3,10 +3,11 @@ import { Box, RadioGroup, Radio, Stack } from '@chakra-ui/react'
 
 import { usdPrice } from  '../../helpers/price-format';
 import ProductRating from '../product-detail/ProductRating';
+import ColorChoice from '../ui/ColorChoice';
 import Button from '../ui/Button';
 
 const SimpleInput = (props) => {
-    const { name, description, price, reviews, ratings, variants } = props;
+    const { name, description, price, reviews, ratings, variants, colorVariants } = props;
     
     const uniqSizeArr = variants.map(variant => {
         return variant.size
@@ -15,17 +16,23 @@ const SimpleInput = (props) => {
     const uniqSize = [...new Set(uniqSizeArr)];
     
 
-    const [enteredSize, setEnteredSize] = useState('');
+    const [enteredSize, setEnteredSize, enteredColor, setEnteredColor] = useState('');
 
     const sizeInputChangeHandler = (event) => {
         setEnteredSize(event.target.value);
-        console.log('CLICKED', event.target.value)
+        console.log('CLICKED', event.target.value);
     };
 
     const formSubmissionHandler = (event) => {
         event.preventDefault();
         console.log(enteredSize);
     };
+
+    const colorInputChangeHandler = (id) => {
+        // setEnteredColor(event.target.value);
+        console.log('CLICKED', id)
+    };
+
 
     return(
         <Box p='4'>
@@ -69,6 +76,10 @@ const SimpleInput = (props) => {
                     {/* <ProductVariants variantProps={variants}/> */} 
                 </RadioGroup>
 
+                <ColorChoice 
+                    imgUrl={colorVariants} 
+                    onSetColor={colorInputChangeHandler}
+                />
 
                 <Box>
                     <Button btn={'Add to Cart'} />

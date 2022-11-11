@@ -1,23 +1,18 @@
-import { useState } from "react";
-
 import HeaderMain from "./HeaderMain";
 import Cart from "../../pages/Cart";
 import CartProvider from "../../pages/store/CartProvider";
 
 const Layout = (props) => {
+    // const extractData = props.children.props.categories;
 
-    // const [cartIsShown, setCartIsShown] = useState(false);
-    // const showCartHandler = () => {
-    //     setCartIsShown(true);
-    // };
+    // const categories = extractData.map((category) => {
+    //     return category;
+    // })
 
-    // const hideCartHandler = () => {
-    //     setCartIsShown(false);
-    // }
 
     return (
         <CartProvider>
-            <Cart />
+            {/* <Cart /> */}
             <HeaderMain />
             <main>
                 {props.children}
