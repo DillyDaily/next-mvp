@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, RadioGroup, Radio, Stack } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
 import { usdPrice } from  '../../helpers/price-format';
 import ProductRating from '../product-detail/ProductRating';
@@ -16,16 +16,18 @@ const SimpleInput = (props) => {
         setEnteredSize(event.target.value);
         console.log('CLICKED', event.target.value);
     };
+    
+    const colorInputChangeHandler = (id) => {
+        // setEnteredColor(event.target.value);
+        // console.log('CLICKED ', id)
+    };
 
     const formSubmissionHandler = (event) => {
         event.preventDefault();
-        console.log(enteredSize);
+        console.log(enteredSize, " Added to cart");
+        // console.log(enteredColor);
     };
 
-    const colorInputChangeHandler = (id) => {
-        // setEnteredColor(event.target.value);
-        // console.log('CLICKED', id)
-    };
 
 
     return(
@@ -51,8 +53,10 @@ const SimpleInput = (props) => {
              ratings={ratings}
             />
 
-            <Box as='form' 
-                onSubmit={formSubmissionHandler}>
+            <Box 
+                as='form' 
+                onSubmit={formSubmissionHandler}
+            >
                 <ProductSizeVariants 
                     sizeVariantProps={variants}
                     onHandleSize={sizeInputChangeHandler}
@@ -62,7 +66,7 @@ const SimpleInput = (props) => {
                     onSetColor={colorInputChangeHandler}
                 />
 
-                <Box>
+                <Box pt='4'>
                     <Button btn={'Add to Cart'} />
                 </Box>
             </Box>

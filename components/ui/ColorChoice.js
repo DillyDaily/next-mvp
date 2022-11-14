@@ -36,7 +36,7 @@ const ColorChoice = React.forwardRef((props, ref) => {
                             {...radio}
                             >
                             {<Image 
-                            onChange={colorInputChangeHandler(value[0].id)}
+                                onChange={colorInputChangeHandler(value[0].id)}
                                 borderRadius = 'full'
                                 boxSize = '25px'
                                 key={value[0].id}

@@ -1,8 +1,11 @@
+// import { useState } from 'react';
 
 import { Radio, Stack, RadioGroup  } from '@chakra-ui/react';
 
 const ProductSizeVariants = (props) => {
     const {sizeVariantProps} = props;
+
+    // const [selectedSize] = useState('');
     
     const uniqSizeArr = sizeVariantProps.map(variant => {
         return variant.size

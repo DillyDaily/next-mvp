@@ -23,12 +23,11 @@ const ProductHome = (props) => {
   return (
     <Fragment>
       <Box display='flex'>
-        <VStack spacing='24px' align='left'>
+        
           <ImageScroll imgUrl={extractIndex.images} />
-        </VStack>
-        <Box boxSize='md' my='2'>
+        {/* <Box boxSize='md' my='2'>
           <Image src={imgData[0]} alt={extractIndex.name}  height='100%' width='100%'/>
-        </Box>
+        </Box> */}
         <Box>
           {/* //TODO: CLEAN UP if not using PRod details */}
           {/* <ProductDetails  

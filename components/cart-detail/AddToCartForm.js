@@ -18,7 +18,6 @@ const AddToCartForm = (props) => {
 
     const { variants, colorVariants } = props;
 
-    // const [value, setValue] = useState('LARGE')
 
     return (
             <Box 
@@ -33,8 +32,6 @@ const AddToCartForm = (props) => {
                 <RadioGroup 
                     ref={sizeInputRef}
                     p='4'
-                    // onChange={setValue} 
-                    // value={value} 
                 >
                     <ProductSizeVariants variantProps={variants}/>
                 </RadioGroup>
