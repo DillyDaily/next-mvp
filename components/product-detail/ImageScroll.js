@@ -4,9 +4,9 @@ import { Box, Image, VStack } from '@chakra-ui/react';
 
 const ImageScroll = (props) => {
 
-    const [selectedImg, setSelectedImg] = useState('https://media.graphassets.com/DgRVX5W9TzunfvNrJsQV');
-    
     const { imgUrl } = props;
+    
+    const [selectedImg, setSelectedImg] = useState(String(imgUrl[0].url));
 
     const imgSelectedChangeHandler = (event) => {
         setSelectedImg(event.target.src)
@@ -24,7 +24,6 @@ const ImageScroll = (props) => {
                         key={image.id} 
                         src={image.url} 
                         alt={image.name}
-                        value={selectedImg}
                         onClick={imgSelectedChangeHandler}
                     />
                 </Box>
@@ -36,7 +35,7 @@ const ImageScroll = (props) => {
           <Image src={selectedImg} alt={imgUrl[0].name}  height='100%' width='100%'/>
         </Box>
         </Fragment>
-    )
+    );
 };
 
 export default ImageScroll;

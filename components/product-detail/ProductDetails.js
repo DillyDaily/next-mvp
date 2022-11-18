@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { usdPrice } from  '../../helpers/price-format';
 import ProductRating from './ProductRating';
-
+//TODO delete if not using
 //MOVED PRODUCT Details to Simple Input 
 
 const ProductDetails = (props) => {

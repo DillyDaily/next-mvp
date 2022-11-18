@@ -1,5 +1,6 @@
+import CartItem from './CartItem';
 
-const CartList = () => {
+const CartList = (props) => {
 
     return(
         <div> CART Item </div>

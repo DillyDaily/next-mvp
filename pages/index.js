@@ -2,9 +2,13 @@ import { GraphQLClient } from 'graphql-request';
 
 import CategoryList from "../components/category-detail/CategoryList";
 
-const Home = (props) => {
-  return <CategoryList categories={props.categories} />
-}
+const Home = (props) => { 
+
+  const { categories } = props
+  
+  return <CategoryList categories={categories} /> 
+
+};
 
 export async function getStaticProps() { 
   const hygraph = new GraphQLClient(

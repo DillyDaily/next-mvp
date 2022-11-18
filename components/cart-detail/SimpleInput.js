@@ -1,37 +1,35 @@
 import { useState } from 'react';
-import { Box } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react';
 
 import { usdPrice } from  '../../helpers/price-format';
-import ProductRating from '../product-detail/ProductRating';
+import ProductSizeVariants from '../product-detail/ProductSizeVariants';
 import ColorChoice from '../ui/ColorChoice';
 import Button from '../ui/Button';
-import ProductSizeVariants from '../product-detail/ProductSizeVariants';
+import ProductRating from '../product-detail/ProductRating';
 
 const SimpleInput = (props) => {
     const { name, description, price, reviews, ratings, variants, colorVariants } = props;
 
-    const [enteredSize, setEnteredSize, enteredColor, setEnteredColor] = useState('');
+    const [enteredSize, setEnteredSize] = useState('');
+    const [enteredColor, setEnteredColor] = useState('');
 
     const sizeInputChangeHandler = (event) => {
         setEnteredSize(event.target.value);
-        console.log('CLICKED', event.target.value);
     };
     
-    const colorInputChangeHandler = (id) => {
-        // setEnteredColor(event.target.value);
-        // console.log('CLICKED ', id)
+    const colorInputChangeHandler = (event) => {
+        setEnteredColor(event.target.alt);
     };
 
     const formSubmissionHandler = (event) => {
         event.preventDefault();
         console.log(enteredSize, " Added to cart");
-        // console.log(enteredColor);
+        console.log(enteredColor, " Added to cart");
     };
-
-
 
     return(
         <Box p='4'>
+
             <Box mt='1'
                 fontWeight='semibold'
                 as='h4'
@@ -47,11 +45,6 @@ const SimpleInput = (props) => {
             <Box>
                 {usdPrice(price)}
             </Box>
-
-            <ProductRating 
-             reviews={reviews}
-             ratings={ratings}
-            />
 
             <Box 
                 as='form' 
@@ -70,6 +63,11 @@ const SimpleInput = (props) => {
                     <Button btn={'Add to Cart'} />
                 </Box>
             </Box>
+
+            <ProductRating 
+            reviews={reviews}
+            ratings={ratings}
+            />
          </Box>
     );
 };

@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Container, Flex, Spacer } from '@chakra-ui/react';
+import { Flex, Spacer } from '@chakra-ui/react';
 import HeaderCartButton from './HeaderCartButton';
 import NavMain from './NavMain';
+import Logo from '../ui/Logo';
 
 const HeaderMain = () => {
 
@@ -28,11 +28,11 @@ const HeaderMain = () => {
         }
     ];
 
-    const [categories] = useState(categoryData);
 
     return (
         <Flex minWidth='max-content' alignItems='center' gap='2' p='4'>
-            <NavMain navItems={categories} />
+            <Logo />
+            <NavMain navItems={categoryData} />
             <Spacer />
             <HeaderCartButton />
         </Flex>

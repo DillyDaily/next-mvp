@@ -11,7 +11,6 @@ const NavItem = (props) => {
             <NextLink href={navLink} alt={title}>
                 <Link > {title} </Link>
             </NextLink>
-
         </ListItem>
     );
 };

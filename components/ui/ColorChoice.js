@@ -8,26 +8,34 @@ const ColorChoice = React.forwardRef((props, ref) => {
     
     const { imgUrl } = props;
     const newOptions = imgUrl.map((i) => {
-        return i.colorPhoto
+        return i.colorPhoto[0]
     });
-    
-    const colorInputChangeHandler = (id) => {
-        props.onSetColor(id);
-    }
+
+    const uniqueColors = [];
+
+    const unique = newOptions.filter(color => {
+        const isDuplicate = uniqueColors.includes(color.id);
+
+        if (!isDuplicate) {
+            uniqueColors.push(color.id);
+
+            return true;
+        }
+
+        return false;
+    });
 
     const { getRootProps, getRadioProps } = useRadioGroup({
         name: 'color options',
         defaultValue: 'color at first index',
-        // onChange: colorInputChangeHandler(value[0].id)
-    })
+    });
 
     const group = getRootProps()
-
 
     return(
         <HStack {...group}>
             {
-                newOptions.map((value, index) => {
+                unique.length > 0 && unique.map((value, index) => {
                     const radio = getRadioProps({ value })
                     return (
                         <CustomRadioButton as="input"
@@ -36,12 +44,12 @@ const ColorChoice = React.forwardRef((props, ref) => {
                             {...radio}
                             >
                             {<Image 
-                                onChange={colorInputChangeHandler(value[0].id)}
+                                onClick={props.onSetColor}
                                 borderRadius = 'full'
                                 boxSize = '25px'
-                                key={value[0].id}
-                                src={value[0].url}
-                                alt={value[0].fileName}
+                                key={value.id}
+                                src={value.url}
+                                alt={value.fileName}
                                 cursor = 'pointer'
                                 borderWidth = '1px'
                                 _focus={{

@@ -1,66 +1,48 @@
 import { GraphQLClient } from "graphql-request";
-import { Fragment } from "react";
-import { Box, Image, VStack } from '@chakra-ui/react';
+import { useRouter } from 'next/router'; 
+import { Box, Spinner } from '@chakra-ui/react';
 
-import ProductDetails from "../../../components/product-detail/ProductDetails";
 import ImageScroll from "../../../components/product-detail/ImageScroll";
-import AddToCartForm from "../../../components/cart-detail/AddToCartForm";
 import SimpleInput from "../../../components/cart-detail/SimpleInput";
 
 
 const ProductHome = (props) => {
+  const router = useRouter()
   
   const extractIndex = props.singleProduct[0];
 
-  const imgData = extractIndex.images.map((img) => {
-    return img.url
-  })
-
   const ratingData = extractIndex.reviews.map((rating) => {
-    return rating
-  })
+    return rating;
+  });
 
   return (
-    <Fragment>
-      <Box display='flex'>
-        
-          <ImageScroll imgUrl={extractIndex.images} />
-        {/* <Box boxSize='md' my='2'>
-          <Image src={imgData[0]} alt={extractIndex.name}  height='100%' width='100%'/>
-        </Box> */}
-        <Box>
-          {/* //TODO: CLEAN UP if not using PRod details */}
-          {/* <ProductDetails  
-            key={extractIndex.id}
-            name={extractIndex.name}
-            description={extractIndex.description}
-            price={extractIndex.price}
-            imgUrl={imgData}
-            slug={extractIndex.slug}
-            reviews={extractIndex.reviews}
-            ratings={ratingData}
-            /> */}
-          {/* <AddToCartForm 
-            imgUrl={extractIndex.images} 
-            variants={extractIndex.variants}
-            colorVariants={extractIndex.variants}
-          /> */}
-          <SimpleInput 
-            key={extractIndex.id}
-            name={extractIndex.name}
-            description={extractIndex.description}
-            price={extractIndex.price}
-            slug={extractIndex.slug}
-            reviews={extractIndex.reviews}
-            ratings={ratingData}
-            imgUrl={extractIndex.images} 
-            variants={extractIndex.variants}
-            colorVariants={extractIndex.variants}
-          />
-        </Box>
+  router.isFallback ? (
+    <Spinner
+      thickness='4px'
+      speed='0.65s'
+      emptyColor='gray.200'
+      color='blue.500'
+      size='xl'
+    />
+  ) : ( 
+    <Box display='flex'>
+      <ImageScroll imgUrl={extractIndex.images} />
+      <Box>
+        <SimpleInput 
+          key={extractIndex.id}
+          name={extractIndex.name}
+          description={extractIndex.description}
+          price={extractIndex.price}
+          slug={extractIndex.slug}
+          reviews={extractIndex.reviews}
+          ratings={ratingData}
+          imgUrl={extractIndex.images} 
+          variants={extractIndex.variants}
+          colorVariants={extractIndex.variants}
+        />
       </Box>
-    </Fragment>
-  )
+    </Box>
+  ));
 };
   
 export async function getStaticProps(context) { 
@@ -139,7 +121,7 @@ export async function getStaticPaths() {
           productslug : product.slug
          }
       })),
-    fallback: false,
+    fallback: true,
    };
 };
 

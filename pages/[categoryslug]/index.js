@@ -1,9 +1,26 @@
 import { GraphQLClient } from 'graphql-request';
+import { useRouter } from 'next/router'; 
+
 import ProductList from '../../components/product-detail/ProductList';
+import { Spinner } from '@chakra-ui/react';
 
 const CategoryHome = (props) => {
     const { loadedProducts } = props;
-    return <ProductList products={loadedProducts}/>;
+    const router = useRouter();
+
+    return (
+      router.isFallback ? (
+      <Spinner
+        thickness='4px'
+        speed='0.65s'
+        emptyColor='gray.200'
+        color='blue.500'
+        size='xl'
+      />
+      ) : ( 
+     <ProductList products={loadedProducts}/>
+      )
+    );
 };
 
 export async function getStaticProps(context) {
@@ -59,7 +76,7 @@ export async function getStaticProps(context) {
     paths: categories.map(({ slug }) => ({
         params: { categoryslug : slug }
     })),
-    fallback: false,
+    fallback: true,
    };
 };
 
