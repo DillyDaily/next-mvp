@@ -1,13 +1,13 @@
 import { LinkBox, Box, LinkOverlay, Image } from '@chakra-ui/react';
-import classes from './CategoryItem.module.css';
 
 const CategoryItem = (props) => {
     
     const { name, slug, imgUrl } = props;
 
     return(
-        <LinkBox className={classes.container} 
+        <LinkBox 
             as='li'
+            position='relative'
             maxW='sm' 
             overflow='hidden'
             borderColor='#000'
@@ -17,8 +17,11 @@ const CategoryItem = (props) => {
             <LinkOverlay href={slug}>
                 <Box py='4'>
                     {/* <Button className={classes.quickshop} btn={'Add to Cart'} /> */}
-                    <Box className={classes.quickshop}
+                    <Box
                     as="button"
+                    position='absolute'
+                    bottom='0'
+                    width='100%'
                     height='44px'
                     lineHeight='1.2'
                     transition='all 0.2s cubic-bezier(.08,.52,.52,1)'

@@ -11,13 +11,13 @@ const NavMain = (props) => {
             flexDirection="row"
             styleType="none"
         >
-                {navItems.map((navItem) => (
-                    <NavItem 
-                    key={navItem.id}
-                    title={navItem.name}
-                    slug={navItem.slug}
-                    />
-                    ))}
+            {navItems.map((navItem) => (
+                <NavItem 
+                key={navItem.id}
+                title={navItem.name}
+                slug={navItem.slug}
+                />
+            ))}
         </UnorderedList>
     );
 };

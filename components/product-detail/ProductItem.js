@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { LinkBox, Box, LinkOverlay, Image } from '@chakra-ui/react';
-import classes from './ProductItem.module.css';
 import { usdPrice } from  '../../helpers/price-format';
 // import Button from '../ui/Button';
 
@@ -10,8 +9,9 @@ const ProductItem = (props) => {
     const categoryRef = router.query.categoryslug;
 
     return(
-        <LinkBox className={classes.container} 
+        <LinkBox 
             as='li'
+            position = 'relative'
             maxW='sm' 
             overflow='hidden'
             borderColor='#000'
@@ -38,8 +38,11 @@ const ProductItem = (props) => {
                     </Box>
                 </Box>
                 <Box py='4'>
-                    <Box className={classes.quickshop}
+                    <Box 
                     as="button"
+                    position='absolute'
+                    bottom='0'
+                    width='100%'
                     height='44px'
                     lineHeight='1.2'
                     transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
